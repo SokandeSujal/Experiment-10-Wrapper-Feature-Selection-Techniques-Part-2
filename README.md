@@ -101,6 +101,21 @@ Visualizes feature importance based on selected subsets from GA and SA.
 
 ```python
 # Feature importance visualization implementation...
+def plot_feature_importance(X, selected_features, title):
+    importances = np.mean([cross_val_score(DecisionTreeClassifier(), X.iloc[:, selected_features], y, cv=5, scoring='accuracy') for _ in range(10)])
+    plt.figure(figsize=(10, 6))
+    plt.bar(range(len(selected_features)), importances, color='blue')
+    plt.xticks(range(len(selected_features)), selected_features, rotation=45)
+    plt.title(title)
+    plt.xlabel('Features')
+    plt.ylabel('Importance (Mean Accuracy)')
+    plt.savefig("Feature_Importance_GA_Selected_Features.png")
+    plt.savefig("Feature_Importance_SA_Selected_Features.png")
+    plt.show()
+
+# Plot feature importance for GA and SA
+plot_feature_importance(X, selected_features_ga, "Feature Importance from GA Selected Features")
+plot_feature_importance(X, current_state, "Feature Importance from SA Selected Features")
 ```
 
 ![Feature Importance from GA Selected Features](Feature_Importance_GA_Selected_Features.png)
@@ -121,6 +136,25 @@ Visualizes the confusion matrix for models trained on GA and SA selected feature
 
 ```python
 # Confusion matrix implementation...
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+
+def plot_confusion_matrix(selected_features, title):
+    model = DecisionTreeClassifier()
+    model.fit(X.iloc[:, selected_features], y)
+    y_pred = model.predict(X.iloc[:, selected_features])
+    
+    cm = confusion_matrix(y, y_pred)
+    disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=[0, 1])
+    
+    disp.plot(cmap=plt.cm.Blues)
+    plt.title(title)
+    plt.savefig("Confusion_Matrix_GA_Selected_Features.png")
+    plt.savefig("Confusion_Matrix_SA_Selected_Features.png")
+    plt.show()
+
+# Confusion matrix for GA and SA selected features
+plot_confusion_matrix(selected_features_ga, "Confusion Matrix for GA Selected Features")
+plot_confusion_matrix(current_state, "Confusion Matrix for SA Selected Features")
 ```
 
 ![Confusion Matrix for GA Selected Features](Confusion_Matrix_GA_Selected_Features.png)
@@ -131,6 +165,22 @@ Visualizes accuracy distribution for GA and SA selected features.
 
 ```python
 # Box plot implementation...
+# Box plot for accuracy distribution
+def plot_accuracy_distribution(selected_features, title):
+    model = DecisionTreeClassifier()
+    cv_scores = cross_val_score(model, X.iloc[:, selected_features], y, cv=5)
+    
+    plt.figure(figsize=(8, 6))
+    plt.boxplot(cv_scores, vert=False)
+    plt.title(title)
+    plt.xlabel("Accuracy")
+    plt.savefig("Accuracy_Distribution_GA_Selected_Features.png")
+    plt.savefig("Accuracy_Distribution_SA_Selected_Features.png")
+    plt.show()
+
+# Accuracy distribution for GA and SA
+plot_accuracy_distribution(selected_features_ga, "Accuracy Distribution for GA Selected Features")
+plot_accuracy_distribution(current_state, "Accuracy Distribution for SA Selected Features")
 ```
 
 ![Accuracy Distribution for GA Selected Features](Accuracy_Distribution_GA_Selected_Features.png)
