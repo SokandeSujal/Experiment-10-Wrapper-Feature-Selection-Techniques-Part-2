@@ -103,8 +103,8 @@ Visualizes feature importance based on selected subsets from GA and SA.
 # Feature importance visualization implementation...
 ```
 
-![Feature Importance from GA Selected Features](Feature_Importance_from_GA_Selected_Features.png)
-![Feature Importance from SA Selected Features](Feature_Importance_from_SA_Selected_Features.png)
+![Feature Importance from GA Selected Features](Feature_Importance_GA_Selected_Features.png)
+![Feature Importance from SA Selected Features](Feature_Importance_SA_Selected_Features.png)
 
 ### GA Fitness Evolution Over Generations
 Visualizes fitness (accuracy) evolution during GA.
@@ -123,8 +123,8 @@ Visualizes the confusion matrix for models trained on GA and SA selected feature
 # Confusion matrix implementation...
 ```
 
-![Confusion Matrix for GA Selected Features](Confusion_Matrix_for_GA_Selected_Features.png)
-![Confusion Matrix for SA Selected Features](Confusion_Matrix_for_SA_Selected_Features.png)
+![Confusion Matrix for GA Selected Features](Confusion_Matrix_GA_Selected_Features.png)
+![Confusion Matrix for SA Selected Features](Confusion_Matrix_SA_Selected_Features.png)
 
 ### Box Plot of Accuracy Across Cross-Validation Folds
 Visualizes accuracy distribution for GA and SA selected features.
@@ -133,8 +133,8 @@ Visualizes accuracy distribution for GA and SA selected features.
 # Box plot implementation...
 ```
 
-![Accuracy Distribution for GA Selected Features](Accuracy_Distribution_for_GA_Selected_Features.png)
-![Accuracy Distribution for SA Selected Features](Accuracy_Distribution_for_SA_Selected_Features.png)
+![Accuracy Distribution for GA Selected Features](Accuracy_Distribution_GA_Selected_Features.png)
+![Accuracy Distribution for SA Selected Features](Accuracy_Distribution_SA_Selected_Features.png)
 
 ## 4. Conclusion
 
